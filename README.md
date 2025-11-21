@@ -36,3 +36,4 @@ Your stack includes several advanced tools and frameworks:
 - MySQL/PostgreSQL: External databases — you’ll need to learn SQL and how to connect them to Spring.
 - Spring Security + JWT: For authentication and authorization. You’ll need to learn how to secure endpoints and manage tokens.
 - Maven or Gradle: Build tools — not part of core Java. You’ll use them to manage dependencies and automate builds.
+  
