@@ -1,12 +1,15 @@
-import model.Admin;
 import model.Product;
+import model.Tag;
+import model.User;
 
 public class Main {
   public static void main(String[] args) {
     Product airForceOne = new Product("Air Force One", "This is a sneakers for caual outings", 1200, 5);
-    Admin adeboye = new Admin("@adeboye", "adeboye.kunle@gmail.com");
+    User adminAdeboye = new User("@adeboye", "adeboye.kunle@gmail.com", Tag.ADMIN);
+    User userFolabi = new User("@fola.creator", "fola.creator@gmail.com");
 
     System.out.println(airForceOne);
-    System.out.println(adeboye);
+    System.out.println(adminAdeboye);
+    System.out.println(userFolabi);
   }
 }
