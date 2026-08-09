@@ -2,9 +2,9 @@ package model;
 
 public class User {
   private final int id;
-  private String username;
-  private String email;
-  private Tag tag;
+  private final String username;
+  private final String email;
+  private final Tag tag;
 
   public User(String username, String email) {
     this(username, email, null);
@@ -23,6 +23,7 @@ public class User {
   
   public String toString() {
     String base = String.format("User(id=%d, username=%s, email=%s", this.id, this.username, this.email);
+
     return this.tag != null ? base + String.format(", tag=%s", this.tag) + ")" : base + ")";
   }
 }

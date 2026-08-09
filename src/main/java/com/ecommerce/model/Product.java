@@ -5,13 +5,13 @@ public class Product {
   // static ArrayList<Product> products = new ArrayList<>();
 
   private final int id;
-  private String productName;
-  private String productDescription;
-  private double productPrice;
-  private int productStock;
+  private final String productName;
+  private final String productDescription;
+  private final double productPrice;
+  private final int productStock;
 
   public Product(String productName, String productDescription, double productPrice) {
-    this(productName, productDescription, productPrice, null)
+    this(productName, productDescription, productPrice, 0);
   }
 
   public Product(String productName, String productDescription, double productPrice, int productStock) {
@@ -22,8 +22,6 @@ public class Product {
     this.productDescription = productDescription;
     this.productPrice = productPrice;
     this.productStock = productStock;
-
-    // products.add(this);
   }
 
   public int getId() {

@@ -3,8 +3,8 @@ import model.Tag;
 import model.User;
 
 public class Main {
-  public static void main(String[] args) {
-    Product airForceOne = new Product("Air Force One", "This is a sneakers for caual outings", 1200, 5);
+  static void main(String[] args) {
+    Product airForceOne = new Product("Air Force One", "This is a sneakers for casual outings", 1200, 5);
     User adminAdeboye = new User("@adeboye", "adeboye.kunle@gmail.com", Tag.ADMIN);
     User userFolabi = new User("@fola.creator", "fola.creator@gmail.com");
 
