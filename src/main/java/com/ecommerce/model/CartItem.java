@@ -9,16 +9,12 @@ public class CartItem {
     this.quantity = productQty;
   }
 
-  public double getCartItemPrice() {
-    return this.product.getProductPrice();
-  }
-
   public int getCartItemQuantity() {
     return this.quantity;
   }
 
   @Override
   public String toString() {
-    return String.format("CartItem(name=%s, description=%s, price=%.2f, quantity=%d)", this.product.getProductName(), this.product.getProductDescription(), this.getCartItemPrice(), this.getCartItemQuantity());
+    return String.format("CartItem(name=%s, description=%s, price=%.2f, quantity=%d)", this.product.getProductName(), this.product.getProductDescription(), this.product.getProductPrice(), this.getCartItemQuantity());
   }
 }

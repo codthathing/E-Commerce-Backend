@@ -2,8 +2,6 @@ package model;
 import java.util.ArrayList;
 
 public class Product {
-  // static ArrayList<Product> products = new ArrayList<>();
-
   private final int id;
   private final String productName;
   private final String productDescription;
@@ -25,19 +23,16 @@ public class Product {
   }
 
   public int getId() {
-    return this.id;
+    return id;
   }
-
   public String getProductName() {
-    return this.productName;
+    return productName;
   }
-
   public String getProductDescription() {
-    return this.productDescription;
+    return productDescription;
   }
-
   public double getProductPrice() {
-    return this.productPrice;
+    return productPrice;
   }
 
   @Override
