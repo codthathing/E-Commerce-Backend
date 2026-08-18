@@ -1,20 +1,23 @@
 package model;
 
-public class CartItem {
-  private final Product product;
-  private final int quantity;
+import java.util.UUID;
 
-  public CartItem(String productName, String productDescription, double productPrice, int productQty) {
-    this.product = new Product(productName, productDescription, productPrice);
+public class CartItem {
+  private final UUID id;
+  private final Product product;
+  private int quantity;
+
+  public CartItem(UUID productID, String productName, double productPrice, int productQty) {
+    this.id = UUID.randomUUID();
+    this.product = new Product(productID, productName, productPrice);
     this.quantity = productQty;
   }
 
-  public int getCartItemQuantity() {
-    return this.quantity;
-  }
+  public void setCartItemQuantity(int quantity) { this.quantity = quantity; }
+  public double getCartItemSubTotal() { return this.quantity * this.product.getProductPrice(); }
 
   @Override
   public String toString() {
-    return String.format("CartItem(name=%s, description=%s, price=%.2f, quantity=%d)", this.product.getProductName(), this.product.getProductDescription(), this.product.getProductPrice(), this.getCartItemQuantity());
+    return String.format("CartItem(id=%s, product_id=%s, name=%s, price=%.2f, quantity=%d)", this.id, this.product.getId(), this.product.getProductName(), this.product.getProductPrice(), this.quantity);
   }
 }

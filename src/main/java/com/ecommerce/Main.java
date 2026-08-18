@@ -8,8 +8,12 @@ public class Main {
     Admin adminAdeboye = new Admin("@adeboye", "adeboye.kunle@gmail.com");
     Customer userFolabi = new Customer("@fola.creator", "fola.creator@gmail.com");
 
+    userFolabi.addItemToCart(airForceOne, 4);
+    userFolabi.modifyItemQuantity(0, 2);
+
     System.out.println(airForceOne);
     System.out.println(adminAdeboye);
     System.out.println(userFolabi);
+    System.out.printf("Cart Total: %f", userFolabi.getCartTotal());
   }
 }
