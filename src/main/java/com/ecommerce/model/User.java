@@ -6,17 +6,21 @@ public abstract class User {
   private final UUID id;
   private final String username;
   private final String email;
-  private final Tag tag;
+  private final TagEnum tag;
 
   public static ArrayList<User> users = new ArrayList<>();
 
-  public User(String username, String email, Tag tag) {
+  public User(String username, String email, TagEnum tag) {
     this.id = UUID.randomUUID();
     this.username = username;
     this.email = email;
     this.tag = tag;
 
     users.add(this);
+  }
+
+  public UUID getId() {
+    return this.id;
   }
 
   public boolean canModerate() {

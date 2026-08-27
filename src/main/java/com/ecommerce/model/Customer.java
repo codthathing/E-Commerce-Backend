@@ -9,7 +9,7 @@ public class Customer extends User {
   }
 
   public Customer(String username, String email, ArrayList<CartItem> cart) {
-    super(username, email, Tag.MODERATOR);
+    super(username, email, TagEnum.MODERATOR);
     this.cart = cart;
   }
 
@@ -22,6 +22,10 @@ public class Customer extends User {
   }
   public double getCartTotal() {return this.cart.stream().reduce(0.0, (sum, item) -> sum + item.getCartItemSubTotal(), Double::sum); }
 
+  public void placeOrder() {
+    new Order(this.getId(), this.cart);
+    this.cart.clear();
+  }
 
   @Override
   public String toString() {

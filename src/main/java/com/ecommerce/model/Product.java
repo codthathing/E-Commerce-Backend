@@ -1,13 +1,16 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Product {
   private final UUID id;
   private final String productName;
   private final String productDescription;
-  private final double productPrice;
-  private final int productStock;
+  double productPrice;
+  int productStock;
+
+  public static ArrayList<Product> products = new ArrayList<>();
 
   public Product(UUID productID, String productName, double productPrice) {
     this(productID, productName, "", productPrice, 0);
@@ -25,6 +28,8 @@ public class Product {
     this.productDescription = productDescription;
     this.productPrice = productPrice;
     this.productStock = productStock;
+
+    products.add(this);
   }
 
   public UUID getId() { return id; }
@@ -32,6 +37,14 @@ public class Product {
     return productName;
   }
   public double getProductPrice() { return productPrice; }
+
+  public void updateProductPrice(double productPrice) {
+    this.productPrice = productPrice;
+  }
+
+  public void updateProductStock(int productStock) {
+    this.productStock = productStock;
+  }
 
   @Override
   public String toString() {
