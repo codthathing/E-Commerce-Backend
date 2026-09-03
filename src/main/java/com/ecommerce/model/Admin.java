@@ -1,8 +1,8 @@
 package model;
 
 public class Admin extends User {
-  public Admin(String username, String email) {
-    super(username, email, TagEnum.ADMIN);
+  public Admin(String username, String email, String password) {
+    super(username, email, password, TagEnum.ADMIN);
   }
 
   @Override

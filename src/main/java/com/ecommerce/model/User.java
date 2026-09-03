@@ -1,26 +1,30 @@
 package model;
-import java.util.ArrayList;
 import java.util.UUID;
 
 public abstract class User {
   private final UUID id;
   private final String username;
   private final String email;
-  private final TagEnum tag;
+  private final String password;
+  final TagEnum tag;
 
-  public static ArrayList<User> users = new ArrayList<>();
-
-  public User(String username, String email, TagEnum tag) {
+  public User(String username, String email, String password, TagEnum tag) {
     this.id = UUID.randomUUID();
     this.username = username;
     this.email = email;
+    this.password = password;
     this.tag = tag;
-
-    users.add(this);
   }
 
   public UUID getId() {
     return this.id;
+  }
+
+  public String getPassword() {
+    return this.password;
+  }
+  public String getUsername() {
+    return this.username;
   }
 
   public boolean canModerate() {
