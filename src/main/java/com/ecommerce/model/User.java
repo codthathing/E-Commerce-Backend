@@ -1,14 +1,16 @@
 package model;
+import enums.Tag;
+
 import java.util.UUID;
 
-public abstract class User {
+public class User {
   private final UUID id;
   private final String username;
   private final String email;
   private final String password;
-  final TagEnum tag;
+  final Tag tag;
 
-  public User(String username, String email, String password, TagEnum tag) {
+  public User(String username, String email, String password, Tag tag) {
     this.id = UUID.randomUUID();
     this.username = username;
     this.email = email;
@@ -16,23 +18,12 @@ public abstract class User {
     this.tag = tag;
   }
 
-  public UUID getId() {
-    return this.id;
-  }
-
   public String getPassword() {
     return this.password;
-  }
-  public String getUsername() {
-    return this.username;
-  }
-
-  public boolean canModerate() {
-    return this.tag.getModerate();
   }
 
   @Override
   public String toString() {
-    return String.format("id=%s, username=%s, email=%s, tag=%s", this.id, this.username, this.email, this.tag);
+    return String.format("User(id=%s, username=%s, email=%s, tag=%s)", this.id, this.username, this.email, this.tag);
   }
 }

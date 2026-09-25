@@ -1,6 +1,6 @@
 package model;
+import exceptions.IllegalValue;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 public class Product {
@@ -10,14 +10,13 @@ public class Product {
   double productPrice;
   int productStock;
 
-  public static ArrayList<Product> products = new ArrayList<>();
-
   public Product(UUID productID, String productName, double productPrice) {
     this(productID, productName, "", productPrice, 0);
   }
 
   public Product(String productName, String productDescription, double productPrice, int productStock) {
-    if (productPrice < 0) throw new IllegalArgumentException("Price can't be negative!");
+    if (productPrice < 1) throw new IllegalValue("Price can't be less than 1 Naira!");
+    if (productStock < 1) throw new IllegalValue("Stock amount can't be less than 1!");
 
     this(UUID.randomUUID(), productName, productDescription, productPrice, productStock);
   }
@@ -28,8 +27,6 @@ public class Product {
     this.productDescription = productDescription;
     this.productPrice = productPrice;
     this.productStock = productStock;
-
-    products.add(this);
   }
 
   public UUID getId() { return id; }
@@ -37,6 +34,7 @@ public class Product {
     return productName;
   }
   public double getProductPrice() { return productPrice; }
+  public int getProductStock() { return productStock; }
 
   public void updateProductPrice(double productPrice) {
     this.productPrice = productPrice;

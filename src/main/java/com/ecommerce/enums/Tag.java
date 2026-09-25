@@ -1,11 +1,11 @@
-package model;
+package enums;
 
-public enum TagEnum {
+public enum Tag {
   ADMIN(false), MODERATOR(true);
 
   private final boolean canModerate;
 
-  TagEnum(boolean canModerate) { this.canModerate = canModerate; };
+  Tag(boolean canModerate) { this.canModerate = canModerate; };
 
   public boolean getModerate() { return this.canModerate; };
 }

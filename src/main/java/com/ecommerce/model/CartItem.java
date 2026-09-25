@@ -1,5 +1,4 @@
 package model;
-
 import java.util.UUID;
 
 public class CartItem {
@@ -13,7 +12,9 @@ public class CartItem {
     this.quantity = productQty;
   }
 
+  public Product getCartItemProduct() { return this.product; }
   public void setCartItemQuantity(int quantity) { this.quantity = quantity; }
+  public int getCartItemQuantity() { return this.quantity; }
   public double getCartItemSubTotal() { return this.quantity * this.product.getProductPrice(); }
 
   @Override

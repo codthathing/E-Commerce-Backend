@@ -1,24 +1,11 @@
 package model;
+import enums.Tag;
+import exceptions.UserAlreadyExistsException;
+import exceptions.UserNotFoundException;
+import exceptions.WrongPasswordException;
+
 import java.util.HashMap;
 import java.util.Scanner;
-
-class UserAlreadyExistsException extends Exception {
-  public UserAlreadyExistsException(String message) {
-    super(message);
-  }
-}
-
-class UserNotFoundException extends Exception {
-  public UserNotFoundException(String message) {
-    super(message);
-  }
-}
-
-class WrongPasswordException extends Exception {
-  public WrongPasswordException(String message) {
-    super(message);
-  }
-}
 
 public class UserManager {
   private final HashMap<String, User> users = new HashMap<>();
@@ -58,9 +45,9 @@ public class UserManager {
       if (users.containsKey(signUpCredentials.get("username"))) throw new UserAlreadyExistsException("Username already exists!");
 
       if (signUpCredentials.get("account type").equals("admin")) {
-        user = new Admin(signUpCredentials.get("username"), signUpCredentials.get("email"), signUpCredentials.get("password"));
+        user = new User(signUpCredentials.get("username"), signUpCredentials.get("email"), signUpCredentials.get("password"), Tag.ADMIN);
       } else if (signUpCredentials.get("account type").equals("customer")) {
-        user = new Customer(signUpCredentials.get("username"), signUpCredentials.get("email"), signUpCredentials.get("password"));
+        user = new User(signUpCredentials.get("username"), signUpCredentials.get("email"), signUpCredentials.get("password"), Tag.MODERATOR);
       }
 
       users.put(signUpCredentials.get("username"), user);

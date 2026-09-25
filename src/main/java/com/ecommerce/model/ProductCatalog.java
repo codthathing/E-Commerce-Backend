@@ -3,18 +3,14 @@ package model;
 import java.util.ArrayList;
 
 public class ProductCatalog {
-  private final ArrayList<Product> products;
-
-  public ProductCatalog() {
-    this.products = Product.products;
-  }
+  public static ArrayList<Product> products;
 
   public void displayProducts() {
-    this.products.forEach(product -> System.out.println(product.toString()));
+    products.forEach(product -> System.out.println(product.toString()));
   }
 
-  public Product searchProduct(String productName) {
-    return this.products.stream().filter(product -> product.getProductName().equals(productName)).findFirst().orElse(null);
+  public static Product searchProduct(String productName) {
+    return products.stream().filter(product -> product.getProductName().equals(productName)).findFirst().orElse(null);
   }
 
   public void updateProductPrice(String productName, Integer newProductPrice) {
@@ -34,7 +30,10 @@ public class ProductCatalog {
   }
 
   public Product createProduct(String productName, String productDescription, Integer productPrice, Integer productStock) {
-    return new Product(productName, productDescription, productPrice, productStock);
+    Product newProduct = new Product(productName, productDescription, productPrice, productStock);
+    products.add(newProduct);
+
+    return newProduct;
   }
 
   public void deleteProduct(String productName) {
@@ -42,11 +41,11 @@ public class ProductCatalog {
     if (filterProduct == null) {
       throw new IllegalArgumentException("Product not found: " + productName);
     }
-    this.products.remove(filterProduct);
+    products.remove(filterProduct);
   }
 
   @Override
   public String toString() {
-    return String.format("ProductCatalog(products=%s)", this.products);
+    return String.format("ProductCatalog(products=%s)", products);
   }
 }
