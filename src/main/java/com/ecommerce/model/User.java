@@ -22,6 +22,22 @@ public class User {
     return this.password;
   }
 
+  public String getUsername() {
+    return this.username;
+  }
+
+  public String getEmail() {
+    return this.email;
+  }
+
+  public boolean canModerate() {
+    return this.tag.getModerate();
+  }
+
+  public Tag getTag() {
+    return this.tag;
+  }
+
   @Override
   public String toString() {
     return String.format("User(id=%s, username=%s, email=%s, tag=%s)", this.id, this.username, this.email, this.tag);

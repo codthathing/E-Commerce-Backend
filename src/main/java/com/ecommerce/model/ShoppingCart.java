@@ -11,15 +11,15 @@ public class ShoppingCart {
     Product item = ProductCatalog.searchProduct(productName);
 
     if (item == null) {
-      throw new ProductNotExists("Product not found!");
+      throw new ProductNotExistsException("Product not found!");
     }
 
     if (quantity < 1) {
-      throw new InvalidItemQty("Cart item can't be less than 1");
+      throw new InvalidItemQtyException("Cart item can't be less than 1");
     }
 
     if (item.getProductStock() < quantity) {
-      throw new InsufficientStock(String.format("Insufficient stock, %d item(s) left!", item.getProductStock()));
+      throw new InsufficientStockException(String.format("Insufficient stock, %d item(s) left!", item.getProductStock()));
     }
 
     if (carts.containsKey(customerId) && canModerate) {
@@ -31,7 +31,7 @@ public class ShoppingCart {
 
       carts.put(customerId, cartItems);
     } else {
-      throw new NotCustomer("Not a customer account!");
+      throw new NotCustomerException("Not a customer account!");
     }
   }
 
@@ -40,11 +40,11 @@ public class ShoppingCart {
       carts.get(customerId).remove(itemId);
     } else {
       if (!canModerate) {
-        throw new NotCustomer("Not a customer account, can't modify cart!");
+        throw new NotCustomerException("Not a customer account, can't modify cart!");
       }
 
       if (!carts.containsKey(customerId)) {
-        throw new UserCartNotFound("User cart does not exists!");
+        throw new UserCartNotFoundException("User cart does not exists!");
       }
     }
   }
@@ -55,17 +55,17 @@ public class ShoppingCart {
       Product currentProduct = ProductCatalog.searchProduct(currentCartItem.getCartItemProduct().getProductName());
 
       if (currentProduct.getProductStock() < quantity) {
-        throw new InsufficientStock(String.format("Insufficient quantity, %d item(s) left in stock!", currentProduct.getProductStock()));
+        throw new InsufficientStockException(String.format("Insufficient quantity, %d item(s) left in stock!", currentProduct.getProductStock()));
       }
 
       currentCartItem.setCartItemQuantity(quantity);
     } else {
       if (!canModerate) {
-        throw new NotCustomer("Not a customer account, can't modify cart!");
+        throw new NotCustomerException("Not a customer account, can't modify cart!");
       }
 
       if (!carts.containsKey(customerId)) {
-        throw new UserCartNotFound("User cart does not exists!");
+        throw new UserCartNotFoundException("User cart does not exists!");
       }
     }
   }
@@ -77,11 +77,11 @@ public class ShoppingCart {
       return cartItems.stream().reduce(0.0, (sum, item) -> sum + item.getCartItemSubTotal(), Double::sum);
     } else {
       if (!canModerate) {
-        throw new NotCustomer("Not a customer account!");
+        throw new NotCustomerException("Not a customer account!");
       }
 
       if (!carts.containsKey(customerId)) {
-        throw new UserCartNotFound("User cart does not exists!");
+        throw new UserCartNotFoundException("User cart does not exists!");
       }
 
       return 0;

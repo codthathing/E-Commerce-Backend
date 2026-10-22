@@ -1,8 +1,8 @@
 package model;
 import enums.OrderStatus;
-import exceptions.InsufficientStock;
-import exceptions.UserCartNotFound;
-import exceptions.UserOrderNotFound;
+import exceptions.InsufficientStockException;
+import exceptions.UserCartNotFoundException;
+import exceptions.UserOrderNotFoundException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class OrderManager {
         Product currentProduct = ProductCatalog.searchProduct(item.getCartItemProduct().getProductName());
 
         if (currentProduct.getProductStock() < item.getCartItemQuantity()) {
-          throw new InsufficientStock(String.format("Insufficient stock for %s, %d item(s) left in stock kindly adjust cart item", currentProduct.getProductName(), currentProduct.getProductStock()));
+          throw new InsufficientStockException(String.format("Insufficient stock for %s, %d item(s) left in stock kindly adjust cart item", currentProduct.getProductName(), currentProduct.getProductStock()));
         }
 
         currentProduct.updateProductStock(currentProduct.getProductStock() - item.getCartItemQuantity());
@@ -29,7 +29,7 @@ public class OrderManager {
       orders.put(customerId, newOrder);
       ShoppingCart.carts.remove(customerId);
     } else {
-      throw new UserCartNotFound("User cart does not exists!");
+      throw new UserCartNotFoundException("User cart does not exists!");
     }
   }
 
@@ -37,7 +37,7 @@ public class OrderManager {
     if (orders.containsKey(customerId)) {
       orders.get(customerId).updateOrderStatus(orderStatus);
     } else {
-      throw new UserOrderNotFound("User order does not exists!");
+      throw new UserOrderNotFoundException("User order does not exists!");
     }
   }
 }

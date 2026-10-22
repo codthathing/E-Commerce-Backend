@@ -1,7 +1,7 @@
 package enums;
 
 public enum Tag {
-  ADMIN(false), MODERATOR(true);
+  ADMIN(true), MODERATOR(true), CUSTOMER(false);
 
   private final boolean canModerate;
 

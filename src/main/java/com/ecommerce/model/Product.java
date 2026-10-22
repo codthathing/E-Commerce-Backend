@@ -1,5 +1,5 @@
 package model;
-import exceptions.IllegalValue;
+import exceptions.IllegalValueException;
 
 import java.util.UUID;
 
@@ -15,8 +15,8 @@ public class Product {
   }
 
   public Product(String productName, String productDescription, double productPrice, int productStock) {
-    if (productPrice < 1) throw new IllegalValue("Price can't be less than 1 Naira!");
-    if (productStock < 1) throw new IllegalValue("Stock amount can't be less than 1!");
+    if (productPrice < 1) throw new IllegalValueException("Price can't be less than 1 Naira!");
+    if (productStock < 1) throw new IllegalValueException("Stock amount can't be less than 1!");
 
     this(UUID.randomUUID(), productName, productDescription, productPrice, productStock);
   }
