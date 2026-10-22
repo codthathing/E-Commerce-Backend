@@ -1,4 +1,4 @@
-package exceptions;
+package exception;
 
 public class UnknownAccountTypeException extends RuntimeException {
   public UnknownAccountTypeException(String message) {

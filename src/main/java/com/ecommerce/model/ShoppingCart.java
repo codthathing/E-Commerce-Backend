@@ -1,5 +1,5 @@
 package model;
-import exceptions.*;
+import exception.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;

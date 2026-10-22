@@ -1,5 +1,5 @@
 package model;
-import exceptions.IllegalValueException;
+import exception.IllegalValueException;
 
 import java.util.UUID;
 

@@ -1,8 +1,8 @@
 package model;
 import enums.OrderStatus;
-import exceptions.InsufficientStockException;
-import exceptions.UserCartNotFoundException;
-import exceptions.UserOrderNotFoundException;
+import exception.InsufficientStockException;
+import exception.UserCartNotFoundException;
+import exception.UserOrderNotFoundException;
 
 import java.util.ArrayList;
 import java.util.HashMap;

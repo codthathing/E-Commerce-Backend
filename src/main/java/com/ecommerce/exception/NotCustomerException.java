@@ -1,4 +1,4 @@
-package exceptions;
+package exception;
 
 public class NotCustomerException extends RuntimeException {
   public NotCustomerException(String message) {

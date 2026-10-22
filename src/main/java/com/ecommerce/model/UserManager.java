@@ -1,9 +1,9 @@
 package model;
 import enums.Tag;
-import exceptions.UnknownAccountTypeException;
-import exceptions.UserAlreadyExistsException;
-import exceptions.UserNotFoundException;
-import exceptions.WrongPasswordException;
+import exception.UnknownAccountTypeException;
+import exception.UserAlreadyExistsException;
+import exception.UserNotFoundException;
+import exception.WrongPasswordException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
