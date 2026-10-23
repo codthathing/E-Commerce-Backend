@@ -41,7 +41,7 @@ public class UserManager {
     prompts.put("username", "Enter username: ");
     prompts.put("email", "Enter email: ");
     prompts.put("password", "Enter password: ");
-    prompts.put("accountType", "Enter account type (admin/moderator/customer): ");
+    prompts.put("accountType", "Enter account type (admin/fulfillment_agent/catalog_manager/content_editor/customer): ");
 
     System.out.println();
     for (String key : signUpCredentials.keySet()) {
@@ -56,8 +56,12 @@ public class UserManager {
 
       if (signUpCredentials.get("accountType").equals("admin")) {
         user = new User(signUpCredentials.get("username"), signUpCredentials.get("email"), signUpCredentials.get("password"), Tag.ADMIN);
-      } else if (signUpCredentials.get("accountType").equals("moderator")) {
-        user = new User(signUpCredentials.get("username"), signUpCredentials.get("email"), signUpCredentials.get("password"), Tag.MODERATOR);
+      } else if (signUpCredentials.get("accountType").equals("fulfillment_agent")) {
+        user = new User(signUpCredentials.get("username"), signUpCredentials.get("email"), signUpCredentials.get("password"), Tag.FULFILLMENT_AGENT);
+      } else if (signUpCredentials.get("accountType").equals("catalog_manager")) {
+        user = new User(signUpCredentials.get("username"), signUpCredentials.get("email"), signUpCredentials.get("password"), Tag.CATALOG_MANAGER);
+      } else if (signUpCredentials.get("accountType").equals("content_editor")) {
+        user = new User(signUpCredentials.get("username"), signUpCredentials.get("email"), signUpCredentials.get("password"), Tag.CONTENT_EDITOR);
       } else if (signUpCredentials.get("accountType").equals("customer")) {
         user = new User(signUpCredentials.get("username"), signUpCredentials.get("email"), signUpCredentials.get("password"), Tag.CUSTOMER);
       } else {

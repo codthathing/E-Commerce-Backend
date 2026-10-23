@@ -17,8 +17,14 @@ public class UserService {
       case ADMIN:
         displayAdminMenu(logoutCallback);
         break;
-      case MODERATOR:
-        displayModeratorMenu(logoutCallback);
+      case CATALOG_MANAGER:
+        displayCatalogManagerMenu(logoutCallback);
+        break;
+      case CONTENT_EDITOR:
+        displayContentEditorMenu(logoutCallback);
+        break;
+      case FULFILLMENT_AGENT:
+        displayFulfillmentAgentMenu(logoutCallback);
         break;
       case CUSTOMER:
         displayCustomerMenu(logoutCallback);
@@ -26,40 +32,9 @@ public class UserService {
     }
   }
 
-  private void displayModeratorMenu(Runnable logoutCallback) {
-    System.out.println("1. Add Product\n2. Edit a product\n3. View all products in stock\n4. Account settings\n5. Log out\n");
-    int choice = Integer.parseInt(scanner.nextLine());
-
-    displayModeratorMenuOptions(choice, logoutCallback);
-  }
-
-  private void displayModeratorMenuOptions(int choice, Runnable logoutCallback) {
-    switch (choice) {
-      case 1:
-        System.out.println("\nEnter product name: ");
-        break;
-      case 2:
-        System.out.println("\nEnter product price: ");
-        break;
-      case 3:
-        System.out.println("\nEnter product quantity: ");
-        break;
-      case 4:
-        System.out.println("\nEnter account username: ");
-        break;
-      case 5:
-        logoutCallback.run();
-        break;
-      default:
-        System.out.println("\n%d not part of options available\n\n1. Add Product\n2. Edit a product\n3. View all products in stock\n4. Account settings\n5. Log out\n");
-        choice = Integer.parseInt(scanner.nextLine());
-
-        displayModeratorMenuOptions(choice, logoutCallback);
-    }
-  }
 
   private void displayAdminMenu(Runnable logoutCallback) {
-    System.out.println("1. Filter products in stock\n2. View orders\n3. Clear an order\n4. Account settings\n5. Log out\n");
+    System.out.println("1. View products in stock\n2. View current orders\n3. Post latest content\n4. Create staff account\n5. Account settings\n6. Log out\n");
     int choice = Integer.parseInt(scanner.nextLine());
 
     displayAdminMenuOptions(choice, logoutCallback);
@@ -70,25 +45,89 @@ public class UserService {
       case 1:
         System.out.println("\nEnter product name: ");
         break;
-      case 2:
-        System.out.println("\nEnter customer name: ");
-        break;
-      case 3:
-        System.out.println("\nEnter admin code: ");
-        break;
-      case 4:
-        System.out.println("\nEnter account username: ");
-        break;
-      case 5:
+      case 6:
         logoutCallback.run();
         break;
       default:
-        System.out.println("\n%d not part of options available\n\n1. Filter products in stock\n2. View orders\n3. Clear an order\n4. Account settings\n5. Log out\n");
+        System.out.printf("\n%d not part of options available\n\n1. View products in stock\n2. View current orders\n3. Post latest content\n4. Create staff account\n5. Account settings\n6. Log out\n\n", choice);
         choice = Integer.parseInt(scanner.nextLine());
 
         displayAdminMenuOptions(choice, logoutCallback);
     }
   }
+
+
+  private void displayCatalogManagerMenu(Runnable logoutCallback) {
+    System.out.println("1. View all products in stock\n2. Add Product\n3. Edit a product\n4. Delete product\n5. Account settings\n6. Log out\n");
+    int choice = Integer.parseInt(scanner.nextLine());
+
+    displayCatalogManagerMenuOptions(choice, logoutCallback);
+  }
+
+  private void displayCatalogManagerMenuOptions(int choice, Runnable logoutCallback) {
+    switch (choice) {
+      case 1:
+        System.out.println("\nEnter product name: ");
+        break;
+      case 6:
+        logoutCallback.run();
+        break;
+      default:
+        System.out.printf("\n%d not part of options available\n\n1. View all products in stock\n2. Add Product\n3. Edit a product\n4. Delete product\n5. Account settings\n6. Log out\n\n", choice);
+        choice = Integer.parseInt(scanner.nextLine());
+
+        displayCatalogManagerMenuOptions(choice, logoutCallback);
+    }
+  }
+
+
+  private void displayContentEditorMenu(Runnable logoutCallback) {
+    System.out.println("1. Create a new content\n2. Publish a content from draft\n3. Delete a post\n4. Update an existing post\n5. Account settings\n6. Logout\n");
+    int choice = Integer.parseInt(scanner.nextLine());
+
+    displayContentEditorMenuOptions(choice, logoutCallback);
+  }
+
+  private void displayContentEditorMenuOptions(int choice, Runnable logoutCallback) {
+    switch (choice) {
+      case 1:
+        System.out.println("Post content: ");
+        break;
+      case 6:
+        logoutCallback.run();
+        break;
+      default:
+        System.out.printf("\n%d not part of the options available\n\n1. Create a new content\n2. Publish a content from draft\n3. Delete a post\n4. Update an existing post\n5. Account settings\n6. Logout\n\n", choice);
+        choice = Integer.parseInt(scanner.nextLine());
+
+        displayContentEditorMenuOptions(choice, logoutCallback);
+    }
+  }
+
+
+  private void displayFulfillmentAgentMenu(Runnable logoutCallback) {
+    System.out.println("1. View current orders\n2. Clear customer order (ID)\n3. Account settings\n4. Logout\n");
+    int choice = Integer.parseInt(scanner.nextLine());
+
+    displayFulfillmentAgentMenuOptions(choice, logoutCallback);
+  }
+
+  private void displayFulfillmentAgentMenuOptions(int choice, Runnable logoutCallback) {
+    switch (choice) {
+      case 1:
+        System.out.println("Clear order: ");
+        break;
+      case 4:
+        logoutCallback.run();
+        break;
+      default:
+        System.out.printf("\n%d not part of the options available\n\n1. View current orders\n2. Clear customer order (ID)\n3. Account settings\n4. Logout\n\n", choice);
+        choice = Integer.parseInt(scanner.nextLine());
+
+        displayFulfillmentAgentMenuOptions(choice, logoutCallback);
+    }
+  }
+
 
   private void displayCustomerMenu(Runnable logoutCallback) {
     System.out.println("1. View product list\n2. Add product to cart\n3. View cart items\n4. Place order from cart\n5. Account settings\n6. Log out\n");
@@ -102,23 +141,11 @@ public class UserService {
       case 1:
         System.out.println("\nEnter filter option: ");
         break;
-      case 2:
-        System.out.println("\nEnter product name: ");
-        break;
-      case 3:
-        System.out.println("\nEnter cart item ID: ");
-        break;
-      case 4:
-        System.out.println("\nPlace order from cart items: ");
-        break;
-      case 5:
-        System.out.println("\nEnter account username: ");
-        break;
       case 6:
         logoutCallback.run();
         break;
       default:
-        System.out.println("\n%d not part of options available\n\n1. View product list\n2. Add product to cart\n3. View cart items\n4. Place order from cart\n5. Account settings\n6. Log out\n");
+        System.out.printf("\n%d not part of options available\n\n1. View product list\n2. Add product to cart\n3. View cart items\n4. Place order from cart\n5. Account settings\n6. Log out\n\n", choice);
         choice = Integer.parseInt(scanner.nextLine());
 
         displayCustomerMenuOptions(choice, logoutCallback);

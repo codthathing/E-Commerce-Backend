@@ -30,10 +30,6 @@ public class User {
     return this.email;
   }
 
-  public boolean canModerate() {
-    return this.tag.getModerate();
-  }
-
   public Tag getTag() {
     return this.tag;
   }
